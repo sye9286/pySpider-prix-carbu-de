@@ -16,7 +16,7 @@ response = requests.get(url)
 
 soup = bs4.BeautifulSoup(response.text, "html.parser")
 
-# two tag named "e-ps e-top24", select the second on which has the wanted information
+# two tag named "e-ps e-top24", select the second one which has the wanted information
 foundClass = str(soup.findAll(attrs={"class":"e-ps e-top24"})[1])
 # print(foundClass)
 
