@@ -9,6 +9,7 @@ from datetime import datetime
 
 
 url = 'https://www.benzinpreis-aktuell.de/tanken-esso-tankstelle-kehl-77694-92ef.html'
+jsonFile = '/home/sye/node_app/pySpider/data.json'
 
 # add param
 
@@ -38,8 +39,7 @@ dict_data['price-95'] = float(wordSplit[ wordSplit.index('Euro.') -1 ])
 dict_data['price-E10'] = float(wordSplit[ wordSplit.index('Euro') -1 ])
 dict_data['price-diesel'] = float(wordSplit[ wordSplit.index('€') -1 ])
 
-print(dict_data['date'], dict_data['hour'], dict_data['price-95'], dict_data['price-E10'], dict_data['price-diesel'])
-
-with open('data.json', 'a') as fp:
+with open(jsonFile, 'a') as fp:
     json.dump(dict_data, fp, sort_keys=True, indent=4)
 
+print(dict_data['date'], dict_data['hour'], dict_data['price-95'], dict_data['price-E10'], dict_data['price-diesel'])
