@@ -9,16 +9,19 @@ from datetime import datetime
 
 
 url = 'https://www.benzinpreis-aktuell.de/tanken-esso-tankstelle-kehl-77694-92ef.html'
-jsonFile = '/home/sye/node_app/pySpider/data.json'
+jsonFile = '/home/pi/Projets/python/pySpider-prix-carbu-de/data.json'
 
 # add param
 
-response = requests.get(url)
+# add "headers=headers, verify=False" to resolve "OpenSSL.SSL.Error"
+response = requests.get(url, verify=False)
 
 soup = bs4.BeautifulSoup(response.text, "html.parser")
 
 # two tag named "e-ps e-top24", select the second one which has the wanted information
-foundClass = str(soup.findAll(attrs={"class":"e-ps e-top24"})[1])
+# update [1] is not working anymore, change to [0]
+# foundClass = str(soup.findAll(attrs={"class":"e-ps e-top24"})[1])
+foundClass = str(soup.findAll(attrs={"class":"e-ps e-top24"})[0])
 # print(foundClass)
 
 wordSplit = foundClass.split()

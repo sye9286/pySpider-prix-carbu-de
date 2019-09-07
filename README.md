@@ -1,6 +1,7 @@
 # pySpider-prix-carbu-de
 A Python spider for fetching the fuel price of a station in Kehl
 
+pip3 install bs4
 
 crontab -e
 */5 8-21 * * * /usr/bin/python3 /home/sye/node_app/pySpider/prix-carbu-de.py >> /home/sye/node_app/pySpider/log.log 2>&1 &
