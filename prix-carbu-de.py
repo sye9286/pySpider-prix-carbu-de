@@ -6,14 +6,16 @@ import os
 import json
 from collections import OrderedDict
 from datetime import datetime
-
+import urllib3
 
 url = 'https://www.benzinpreis-aktuell.de/tanken-esso-tankstelle-kehl-77694-92ef.html'
 jsonFile = '/home/pi/Projets/python/pySpider-prix-carbu-de/data.json'
 
 # add param
 
-# add "headers=headers, verify=False" to resolve "OpenSSL.SSL.Error"
+# add "verify=False" to resolve "OpenSSL.SSL.Error"
+# add "urllib3" line to disable SSL connection warning
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 response = requests.get(url, verify=False)
 
 soup = bs4.BeautifulSoup(response.text, "html.parser")
